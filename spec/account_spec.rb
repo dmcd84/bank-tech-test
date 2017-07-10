@@ -32,6 +32,7 @@ describe Account do
   describe '#transaction_details' do
     it 'has a transaction has details recorded' do
       expect { subject.deposit(100) }.to change { subject.transaction_history.count }.by 1
+      expect { subject.withdraw(50) }.to change { subject.transaction_history.count }.by 1
     end
   end
 end

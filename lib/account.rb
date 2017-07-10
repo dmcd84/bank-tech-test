@@ -8,6 +8,10 @@ class Account
     @transaction_history = []
   end
 
+  def new_statement
+    Statement.new(transaction_history)
+  end
+
   def deposit(amount)
     @balance += amount
     transaction_details(amount, @balance)
@@ -16,6 +20,7 @@ class Account
   def withdraw(amount)
     raise 'Insufficent funds available' if @balance < amount
     @balance -= amount
+    transaction_details(amount, @balance)
   end
 
   def transaction_details(amount, balance)
