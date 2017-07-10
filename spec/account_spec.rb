@@ -20,5 +20,9 @@ describe Account do
       subject.withdraw(100)
       expect(subject.balance).to eq(0.5)
     end
+
+    it 'will return an error if there is insufficient funds' do
+      expect { subject.withdraw(100) }.to raise_error('Insufficent funds available')
+    end
   end
 end
