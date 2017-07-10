@@ -5,6 +5,9 @@ describe Account do
     it 'initializes with a balance of 0' do
       expect(subject.balance).to eq(0)
     end
+    it 'has no transactional history' do
+      expect(subject.transaction_history).to eq([])
+    end
   end
 
   describe '#deposit' do
@@ -23,6 +26,12 @@ describe Account do
 
     it 'will return an error if there is insufficient funds' do
       expect { subject.withdraw(100) }.to raise_error('Insufficent funds available')
+    end
+  end
+
+  describe '#transaction_details' do
+    it 'has a transaction has details recorded' do
+      expect { subject.deposit(100) }.to change { subject.transaction_history.count }.by 1
     end
   end
 end

@@ -4,7 +4,7 @@ attr_reader :date, :balance, :amount
 
   def initialize(amount, balance)
     @date = Time.now
-    @balance = balance
     @amount = amount
+    @balance = balance
   end
 end
