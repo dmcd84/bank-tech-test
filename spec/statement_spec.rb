@@ -9,5 +9,6 @@ describe Statement do
     statement = account.new_statement
     statement.printout
     expect(statement.transaction_history).not_to be(nil)
+    expect(statement.transaction_history.count).to eq(2)
   end
 end
