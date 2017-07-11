@@ -13,7 +13,6 @@ describe Account do
   describe '#deposit' do
     it 'can recieve a deposit to increase the balance' do
       subject.deposit(100.50)
-      p subject.transaction_history
       expect(subject.balance).to eq(100.50)
     end
   end

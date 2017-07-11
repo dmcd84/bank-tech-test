@@ -11,17 +11,17 @@ class Account
 
   def deposit(amount)
     @balance += amount
-    transaction_details(amount, @balance)
+    transaction_details(amount, '', @balance)
   end
 
   def withdraw(amount)
     raise 'Insufficent funds available' if @balance < amount
     @balance -= amount
-    transaction_details(amount, @balance)
+    transaction_details('', amount, @balance)
   end
 
-  def transaction_details(amount, balance)
-    transaction = Transaction.new(amount, balance)
+  def transaction_details(credit, debit, balance)
+    transaction = Transaction.new(credit, debit, balance)
     @transaction_history << transaction
   end
 
